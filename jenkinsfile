@@ -9,9 +9,9 @@ node{
     sh "${mvnHome}/bin/mvn package"
    }
    stage('Sonarqube Analysis'){
-     environment {
+     /*environment {
         scannerHome = tool 'sonar-scanner-4.7.0'
-     }
+     }*/
      def SCANNER_HOME = tool name: 'sonar-scanner-4.7.0', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
      def mvnHome = tool name: 'Maven 3.8.5', type: 'maven'
      withSonarQubeEnv(installationName: 'sonar-9', credentialsId: 'sonar-aws-docker') {

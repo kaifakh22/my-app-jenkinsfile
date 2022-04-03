@@ -20,7 +20,7 @@ node{
        //$scannerHome/bin/sonar-scanner
        sh "echo ${SCANNER_HOME}"
        ///var/lib/jenkins/tools/hudson.plugins.sonar.SonarRunnerInstallation/sonar-scanner-4.7.0/bin/sonar-scanner
-       sh '''${SCANNER_HOME}/bin/sonar-scanner  \
+       sh "${SCANNER_HOME}/bin/sonar-scanner  \
          -Dsonar.projectKey=jenkins_pipeline \
          -Dsonar.projectName=jenkins_pipeline \
          -Dsonar.projectVersion=1.0 \
@@ -28,7 +28,7 @@ node{
          -Dsonar.language=java \
          -Dsonar.sources=/var/lib/jenkins/workspace/$JOB_NAME \
          -Dsonar.sources=src/main/java/  \
-         -Dsonar.host.url=http://3.110.197.157:9000/'''
+         -Dsonar.host.url=http://3.110.197.157:9000/ "
      }
    }
    stage('Email Notification'){

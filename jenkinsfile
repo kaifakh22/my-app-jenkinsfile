@@ -31,6 +31,19 @@ node{
          -Dsonar.host.url=http://3.110.197.157:9000/ "
      }
    }
+   stage("Quality Gate") {
+            steps {
+              timeout(time: 1, unit: 'HOURS') {
+                //waitForQualityGate abortPipeline: true this code is in https://igorski.co/sonarqube-scans-using-jenkins-declarative-pipelines/
+                //below code if from https://github.com/javahometech/my-app/blob/master/sonar-status-check
+                def qg = waitForQualityGate()
+                if (qg.status != 'OK') {
+                  error "Pipeline aborted due to quality gate failure: ${qg.status}"
+                }
+         
+              }
+            }
+    }
    stage('Email Notification'){
      mail bcc: '', body: '''Hi,This email is from jenkins pipeline job''', cc: '', from: 'awscloud.akhtar@gmail.com', replyTo: '', subject: 'Jenkins pipeline job', to: 'awscloud.akhtar@gmail.com'
    }

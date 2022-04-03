@@ -16,7 +16,8 @@ node{
      def mvnHome = tool name: 'Maven 3.8.5', type: 'maven'
      withSonarQubeEnv(installationName: 'sonar-9', credentialsId: 'sonar-aws-docker') {
        //sh "${mvnHome}/bin/mvn sonar:sonar"
-       sh 'echo $scannerHome'
+       sh 'echo "Print scanner home"'
+       sh 'echo $SCANNER_HOME'
        sh '''$scannerHome/bin/sonar-scanner  \
          sonar.projectKey=jenkins_pipeline \
          sonar.projectName=jenkins_pipeline \

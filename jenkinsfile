@@ -9,7 +9,7 @@ node{
     sh "${mvnHome}/bin/mvn package"
    }
    stage('Email Notification'){
-     mail bcc: '', body: '''Hi,This email is from jenkins pipeline job''', cc: '', from: '', replyTo: '', subject: 'Jenkins pipeline job', to: 'awscloud.akhtar@gmail.com'
+     mail bcc: '', body: '''Hi,This email is from jenkins pipeline job''', cc: '', from: 'awscloud.akhtar@gmail.com', replyTo: '', subject: 'Jenkins pipeline job', to: 'awscloud.akhtar@gmail.com'
    }
     
 
